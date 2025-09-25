@@ -1,6 +1,8 @@
 :root {
 	--bg: #000000;
 	--accent: #20b562;
+	--article-text: #ff8200;
+	/* main article paragraphs color */
 }
 
 html,
@@ -25,7 +27,7 @@ body {
 
 .terminal {
 	width: min(1080px, 96%);
-	height: 70vh;
+	min-height: 80vh;
 	background: var(--bg);
 	border-radius: 14px;
 	box-shadow: 0 8px 0 rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.55);
@@ -35,6 +37,7 @@ body {
 	grid-template-rows: auto 1fr;
 	overflow: hidden;
 	border: none;
+	flex-direction: column;
 }
 
 .term-head {
@@ -47,13 +50,82 @@ body {
 
 .term-head .beep {
 	color: #ffffff;
+	/* header text white */
 	font-weight: 700;
 	margin-right: 6px;
 }
 
-.content {
-	display: flex;
-	flex-direction: column;
+.cursor {
+	display: inline-block;
+	width: 10px;
+	height: 22px;
+	background: var(--accent);
+	margin-left: 8px;
+	vertical-align: middle;
+	animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+.system-line {
+	color: #ffffff;
+	/* metadata lines white */
+	margin-top: 12px;
+	font-size: 14px;
+	letter-spacing: 0.02em;
+}
+
+/* Make the text inside [ ] green like homepage */
+.system-line code span.green {
+	color: var(--accent);
+	font-weight: 700;
+}
+
+.article-content {
+	line-height: 1.6;
+	font-size: 1.1em;
+	color: var(--article-text);
+	white-space: normal;
+	/* normal paragraph flow */
+	text-align: left;
+	/* left-aligned paragraphs */
+	word-wrap: break-word;
+	/* wrap long words */
+	margin-top: 12px;
+}
+
+.ascii-art {
+	font-family: "Roboto Mono", monospace;
+	white-space: pre;
+	font-size: 6px;
+	line-height: 0.6em;
+	color: var(--accent);
+	margin-bottom: 20px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	max-height: 300px;
+}
+
+a.back-home {
+	display: inline-block;
+	margin-top: 40px;
+	color: #ffffff;
+	/* white for back link text */
+	text-decoration: none;
+}
+
+a.back-home span.green {
+	color: var(--accent);
+	/* green for $back_to_home variable if desired */
+	font-weight: 700;
+}
+
+a.back-home:hover {
+	text-decoration: underline;
 }
 
 .list {
@@ -92,46 +164,6 @@ body {
 	}
 }
 
-.cursor {
-	display: inline-block;
-	width: 10px;
-	height: 22px;
-	background: var(--accent);
-	margin-left: 8px;
-	vertical-align: middle;
-	animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink {
-	50% {
-		opacity: 0;
-	}
-}
-
-.system-line {
-	color: #ffffff;
-	margin-top: 12px;
-	font-size: 14px;
-	letter-spacing: 0.02em;
-}
-
-/* Pagination container: below the list */
-#pagination {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	color: #ffffff;
-	margin-top: 12px;
-}
-
-#pagination code {
-	cursor: pointer;
-}
-
-#pagination code:hover {
-	text-decoration: underline;
-}
-
 @media (max-width:700px) {
 	.list li {
 		flex-direction: column;
@@ -143,10 +175,9 @@ body {
 	}
 }
 
-/* === Inline Minimal Search Bar === */
+/* Inline minimal search bar */
 .terminal-search-inline {
 	margin-left: auto;
-	/* push to right */
 	background: none;
 	border: none;
 	color: #ffffff;
@@ -155,14 +186,11 @@ body {
 	outline: none;
 	padding: 0 4px;
 	min-width: 180px;
-	/* room for “Search for the truth” */
 	flex-shrink: 0;
-	/* don’t let it collapse */
 }
 
 .terminal-search-inline::placeholder {
 	color: #ffffff;
 	opacity: 0.6;
 	white-space: nowrap;
-	/* prevent placeholder wrap */
 }
