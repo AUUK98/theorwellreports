@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>The Orwell Reports — Home</title>
+
+	<!-- Roboto Mono font -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="home_style.css">
+
+	<style>
+		/* Cursor styling */
+		.cursor {
+			display: inline-block;
+			width: 10px;
+			height: 22px;
+			background: #20b562;
+			margin-left: 5px;
+			vertical-align: middle;
+			animation: blink 1s steps(1) infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<main class="terminal" role="main" aria-label="Terminal style homepage">
+			<div>
+				<div class="term-head">
+					<span class="beep">&gt; The Orwell Reports</span><span class="cursor"></span>
+				</div>
+
+				<div class="system-line" id="pages-line">
+					<code>$pages = [ <span style="color: #20b562; font-weight:700">Home</span> ];</code>
+				</div>
+			</div>
+
+			<section class="content" aria-label="Pages list">
+				<ul class="list" id="articles">
+					<!-- JS will populate titles and dates dynamically -->
+				</ul>
+				<div id="pagination">
+					<div class="system-line" id="previous-line">
+						<code>$previous = ;</code>
+					</div>
+					<div class="system-line" id="next-line">
+						<code>$next = ;</code>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<!-- Load articles -->
+	<script src="articles.js"></script>
+	<!-- Load home page script -->
+	<script src="home_script.js"></script>
+</body>
+
+</html>

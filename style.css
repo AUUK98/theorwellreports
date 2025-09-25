@@ -1,0 +1,53 @@
+/* Full-screen body and center content */
+body {
+	background: #000;
+	color: #20b562;
+	/* Classic green terminal text */
+	font-family: 'Roboto Mono', monospace;
+	/* Updated font */
+	font-size: 1.2em;
+	margin: 0;
+
+	/* Flexbox centering */
+	display: flex;
+	justify-content: center;
+	/* Horizontal centering */
+	align-items: center;
+	/* Vertical centering */
+	height: 100vh;
+	/* Full viewport height */
+	padding: 0 20px;
+	/* Prevent text touching edges */
+}
+
+/* Terminal container */
+.terminal {
+	white-space: pre-wrap;
+	/* Keep line breaks */
+	text-align: left;
+	/* Left-align for authentic terminal feel */
+	max-width: 600px;
+	/* Optional width limit */
+	padding: 10px;
+	font-family: 'Roboto Mono', monospace;
+	/* Ensure terminal text uses Roboto Mono */
+}
+
+/* Blinking cursor */
+.cursor {
+	display: inline-block;
+	animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+	0%,
+	50% {
+		opacity: 1;
+	}
+
+	50.01%,
+	100% {
+		opacity: 0;
+	}
+}

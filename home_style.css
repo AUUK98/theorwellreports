@@ -1,0 +1,152 @@
+:root {
+	--bg: #000000;
+	--accent: #20b562;
+	/* green text */
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	background: #000;
+	font-family: "Roboto Mono", monospace;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--accent);
+}
+
+.wrap {
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+	box-sizing: border-box;
+}
+
+.terminal {
+	width: min(1080px, 96%);
+	height: 70vh;
+	background: #000;
+	border-radius: 14px;
+	box-shadow: 0 8px 0 rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.55);
+	padding: 28px;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	overflow: hidden;
+	border: none;
+}
+
+.term-head {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	font-size: 18px;
+	margin-bottom: 6px;
+}
+
+.term-head .beep {
+	color: #ffffff;
+	font-weight: 700;
+	margin-right: 6px;
+}
+
+/* Content section */
+.content {
+	display: flex;
+	flex-direction: column;
+}
+
+/* List fixed height for 6 rows */
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	height: calc(6.7 * 44px);
+	/* exact space for 6 rows */
+}
+
+.list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 0;
+	opacity: 0;
+	transform: translateY(8px);
+	animation: appear 420ms forwards;
+}
+
+/* Titles and dates same size */
+.list li a,
+.timestamp {
+	font-size: 20px;
+	/* match title and date */
+	color: var(--accent);
+	text-decoration: none;
+	letter-spacing: 0.03em;
+	/* match visual spacing */
+}
+
+.list li a:hover {
+	text-decoration: underline;
+}
+
+@keyframes appear {
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.cursor {
+	display: inline-block;
+	width: 10px;
+	height: 22px;
+	background: var(--accent);
+	margin-left: 8px;
+	vertical-align: middle;
+	animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+.system-line {
+	color: #ffffff;
+	margin-top: 12px;
+	font-size: 14px;
+	letter-spacing: 0.02em;
+}
+
+/* Pagination container: below the list */
+#pagination {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	color: #ffffff;
+	margin-top: 12px;
+	/* spacing just below the 6-row list */
+}
+
+#pagination code {
+	cursor: pointer;
+}
+
+#pagination code:hover {
+	text-decoration: underline;
+}
+
+@media (max-width:700px) {
+	.list li {
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.timestamp {
+		text-align: left;
+	}
+}
