@@ -158,74 +158,79 @@ body {
 
 /* === Mobile Fixes (≤768px) === */
 @media (max-width: 768px) {
+
+	/* Align terminal and wrap flush left/top */
 	.wrap {
 		justify-content: flex-start;
-		/* align terminal left */
 		align-items: flex-start;
-		/* align top */
-		padding: 12px;
+		padding: 0;
 	}
 
 	.terminal {
 		width: 100%;
 		height: auto;
-		/* allow content to grow */
 		margin: 0;
-		padding: 16px;
+		padding: 0;
+		/* remove internal padding */
 		border-radius: 0;
-		/* full-width look */
+		box-sizing: border-box;
 	}
 
 	.term-head {
 		flex-wrap: wrap;
 		gap: 8px;
 		font-size: 16px;
-		/* slightly smaller */
+		padding: 0 12px;
+		/* optional for search bar spacing */
 	}
 
 	.terminal-search-inline {
 		flex: 1 1 100%;
 		min-width: 0;
 		font-size: 14px;
-		padding: 6px 8px;
+		padding: 6px 0;
 		box-sizing: border-box;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	}
 
 	.list {
 		height: auto;
-		/* remove fixed height */
 		gap: 4px;
+		padding: 0 12px;
+		/* small padding so titles aren’t at screen edge */
 	}
 
 	.list li {
+		display: flex;
 		flex-direction: row;
-		/* keep title + timestamp on one line */
-		justify-content: flex-start;
-		/* align both left */
+		justify-content: space-between;
+		/* title left, date right */
 		align-items: center;
-		gap: 8px;
+	}
+
+	.list li a,
+	.list li .timestamp {
+		font-size: 14px !important;
+		/* same size for both */
+		line-height: 1.4;
 	}
 
 	.list li a {
-		font-size: 14px;
-		/* smaller title text */
-		flex-shrink: 1;
-		/* shrink if needed */
+		flex: 1 1 auto;
+		text-align: left;
+		/* flush left */
 		white-space: nowrap;
-		/* prevent wrapping */
 		overflow: hidden;
 		text-overflow: ellipsis;
-		/* add "..." if too long */
+		/* truncate if too long */
+		margin-right: 8px;
+		/* spacing between title and date */
 	}
 
-	.timestamp {
-		font-size: 12px;
-		/* smaller date */
-		color: rgba(32, 181, 98, 0.8);
-		/* slightly dimmer */
+	.list li .timestamp {
 		flex-shrink: 0;
-		/* prevent shrinking too much */
+		/* keep date on right */
+		color: var(--accent);
 	}
 
 	.system-line {
