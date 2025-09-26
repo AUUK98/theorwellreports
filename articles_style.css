@@ -120,7 +120,7 @@ a.back-home {
 
 a.back-home span.green {
 	color: var(--accent);
-	/* green for $back_to_home variable if desired */
+	/* green for $back_to_home variable */
 	font-weight: 700;
 }
 
@@ -193,4 +193,62 @@ a.back-home:hover {
 	color: #ffffff;
 	opacity: 0.6;
 	white-space: nowrap;
+}
+
+/* === Mobile Fixes (≤768px) === */
+@media (max-width: 768px) {
+	.wrap {
+		padding: 16px;
+		/* less padding on mobile */
+	}
+
+	.terminal {
+		width: 100%;
+		min-height: auto;
+		/* let height grow naturally */
+		padding: 16px;
+	}
+
+	.term-head {
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 16px;
+		/* slightly smaller for narrow screens */
+	}
+
+	.terminal-search-inline {
+		flex: 1 1 100%;
+		min-width: 0;
+		font-size: 14px;
+		padding: 6px 8px;
+		box-sizing: border-box;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.article-content {
+		font-size: 1em;
+		/* scale down article text */
+		line-height: 1.5;
+	}
+
+	.ascii-art {
+		font-size: 4px;
+		/* shrink ascii art on phones */
+		line-height: 0.5em;
+		max-height: 200px;
+	}
+
+	.list {
+		height: auto;
+		gap: 6px;
+	}
+
+	.list li a,
+	.timestamp {
+		font-size: 16px;
+	}
+
+	.system-line {
+		font-size: 12px;
+	}
 }
