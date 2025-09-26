@@ -132,17 +132,6 @@ body {
 	text-decoration: underline;
 }
 
-@media (max-width:700px) {
-	.list li {
-		flex-direction: column;
-		gap: 4px;
-	}
-
-	.timestamp {
-		text-align: left;
-	}
-}
-
 /* === Inline Minimal Search Bar === */
 .terminal-search-inline {
 	margin-left: auto;
@@ -170,15 +159,21 @@ body {
 /* === Mobile Fixes (≤768px) === */
 @media (max-width: 768px) {
 	.wrap {
-		padding: 16px;
-		/* less padding */
+		justify-content: flex-start;
+		/* align left */
+		align-items: flex-start;
+		/* align top */
+		padding: 12px;
 	}
 
 	.terminal {
 		width: 100%;
 		height: auto;
 		/* let content grow naturally */
+		margin: 0;
 		padding: 16px;
+		border-radius: 0;
+		/* full-width look */
 	}
 
 	.term-head {
@@ -202,13 +197,26 @@ body {
 	.list {
 		height: auto;
 		/* remove fixed height */
+		gap: 4px;
+	}
+
+	.list li {
+		flex-direction: row;
+		/* keep title + timestamp on one line */
+		justify-content: space-between;
+		align-items: center;
 		gap: 6px;
-		/* breathing room */
 	}
 
 	.list li a,
 	.timestamp {
-		font-size: 16px;
+		font-size: 14px;
+		/* smaller text */
+		white-space: nowrap;
+		/* prevent wrapping */
+		overflow: hidden;
+		text-overflow: ellipsis;
+		/* add … if too long */
 	}
 
 	.system-line {
