@@ -160,7 +160,7 @@ body {
 @media (max-width: 768px) {
 	.wrap {
 		justify-content: flex-start;
-		/* align left */
+		/* align terminal left */
 		align-items: flex-start;
 		/* align top */
 		padding: 12px;
@@ -169,7 +169,7 @@ body {
 	.terminal {
 		width: 100%;
 		height: auto;
-		/* let content grow naturally */
+		/* allow content to grow */
 		margin: 0;
 		padding: 16px;
 		border-radius: 0;
@@ -185,9 +185,7 @@ body {
 
 	.terminal-search-inline {
 		flex: 1 1 100%;
-		/* allow full width if needed */
 		min-width: 0;
-		/* remove forced min-width */
 		font-size: 14px;
 		padding: 6px 8px;
 		box-sizing: border-box;
@@ -203,20 +201,31 @@ body {
 	.list li {
 		flex-direction: row;
 		/* keep title + timestamp on one line */
-		justify-content: space-between;
+		justify-content: flex-start;
+		/* align both left */
 		align-items: center;
-		gap: 6px;
+		gap: 8px;
 	}
 
-	.list li a,
-	.timestamp {
+	.list li a {
 		font-size: 14px;
-		/* smaller text */
+		/* smaller title text */
+		flex-shrink: 1;
+		/* shrink if needed */
 		white-space: nowrap;
 		/* prevent wrapping */
 		overflow: hidden;
 		text-overflow: ellipsis;
-		/* add … if too long */
+		/* add "..." if too long */
+	}
+
+	.timestamp {
+		font-size: 12px;
+		/* smaller date */
+		color: rgba(32, 181, 98, 0.8);
+		/* slightly dimmer */
+		flex-shrink: 0;
+		/* prevent shrinking too much */
 	}
 
 	.system-line {
