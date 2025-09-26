@@ -159,7 +159,7 @@ body {
 /* === Mobile Fixes (≤768px) === */
 @media (max-width: 768px) {
 
-	/* Align terminal and wrap flush left/top */
+	/* Terminal box and wrap aligned flush left/top */
 	.wrap {
 		justify-content: flex-start;
 		align-items: flex-start;
@@ -181,7 +181,7 @@ body {
 		gap: 8px;
 		font-size: 16px;
 		padding: 0 12px;
-		/* optional for search bar spacing */
+		/* optional small padding for search bar only */
 	}
 
 	.terminal-search-inline {
@@ -208,28 +208,22 @@ body {
 		align-items: center;
 	}
 
-	.list li a,
-	.list li .timestamp {
-		font-size: 14px !important;
-		/* same size for both */
-		line-height: 1.4;
-	}
-
 	.list li a {
+		font-size: 14px;
+		/* title font size */
+		line-height: 1.4;
 		flex: 1 1 auto;
 		text-align: left;
-		/* flush left */
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		/* truncate if too long */
 		margin-right: 8px;
-		/* spacing between title and date */
 	}
 
 	.list li .timestamp {
+		font-size: 12px;
+		/* slightly smaller date */
 		flex-shrink: 0;
-		/* keep date on right */
 		color: var(--accent);
 	}
 
